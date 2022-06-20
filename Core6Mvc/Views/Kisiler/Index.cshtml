@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model ICollection<Kisi>
+
+<table class="table table-hover">
+
+    <thead>
+        <tr>
+            <td>Adi</td>
+            <td>Soyadi</td>
+            <td>Gsm</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ad</td>
+                <td>@item.Soyad</td>
+                <td>@item.Gsm</td>
+            </tr>
+        }
+    </tbody>
+</table>

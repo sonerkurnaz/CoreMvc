@@ -11,7 +11,7 @@ namespace Core6Mvc.Controllers
             {
                 new Kisi{Ad="Ali",Soyad="Kaya",Gsm="532"},
                 new Kisi{Ad="Ayse",Soyad="Yilmaz",Gsm="532"},
-                new Kisi{Ad="Veli",Soyad="Gexer",Gsm="532"},
+                new Kisi{Ad="Veli",Soyad="Gezer",Gsm="532"},
                 new Kisi{Ad="Ali",Soyad="Kaya",Gsm="532"}
             };
             return View(kisiler);

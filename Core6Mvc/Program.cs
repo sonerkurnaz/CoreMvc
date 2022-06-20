@@ -1,8 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using Northwind.Entities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer("Server=.;Database=Northwind;User Id="));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
