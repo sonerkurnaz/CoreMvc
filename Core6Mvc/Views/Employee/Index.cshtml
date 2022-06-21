@@ -1,0 +1,23 @@
+﻿@model IList<Employee>
+
+<table class="table table-hover">
+
+    <thead>
+        <tr>
+            <td>Ad</td>
+            <td>Soyad</td>
+            <td>Adres</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Address</td>
+            </tr>
+        }
+    </tbody>
+</table>
