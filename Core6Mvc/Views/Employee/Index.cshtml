@@ -1,23 +1,46 @@
-﻿@model ICollection<Employee>
+﻿@using Core6Mvc.Models.DTO.Employees
+@model IEnumerable<EmployeeListDto>
+
+<a class="btn btn-primary" asp-action="Create" asp-controller="Employee">Yeni Kayıt</a>
 
 <table class="table table-hover">
-
     <thead>
         <tr>
-            <td>Ad</td>
-            <td>Soyad</td>
-            <td>Adres</td>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.HireDate)</th>
+            <th>@Html.DisplayNameFor(model => model.Country)</th>
+            <th>@Html.DisplayNameFor(model => model.City)</th>
+            <th>@Html.DisplayNameFor(model => model.HomePhone)</th>
+            <th></th>
         </tr>
     </thead>
-
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var emp in Model)
         {
-            <tr>
-                <td>@item.FirstName</td>
-                <td>@item.LastName</td>
-                <td>@item.Address</td>
-            </tr>
+              <tr>
+                <td>@emp.Id</td>
+                <td>@emp.FirstName</td>
+                <td>@emp.LastName</td>
+                <td>@emp.Title</td>
+                <td>@emp.HireDate</td>
+                <td>@emp.Country</td>
+                <td>@emp.City</td>
+                <td>@emp.HomePhone</td>
+                <td><a class="btn btn-danger" 
+                    asp-action="Delete" 
+                    asp-controller="Employee"
+                    asp-route-id="@emp.Id">Sil</a>
+                </td>
+                <td><a class="btn btn-success" 
+                    asp-action="Update" 
+                    asp-controller="Employee"
+                    asp-route-id="@emp.Id">Güncelle</a>
+                </td>
+                
+              </tr>      
         }
     </tbody>
 </table>

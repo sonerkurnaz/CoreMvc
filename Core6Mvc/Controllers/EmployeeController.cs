@@ -34,8 +34,17 @@ namespace Core6Mvc.Controllers
 
                 //Listeye ekliyoruz..
                 listDtos.Add(listDto);
+                //view e gönder
 
             }
+
+            return View(listDtos);
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            EmployeeCreateDto createDto = new();
+
 
             return View();
         }
