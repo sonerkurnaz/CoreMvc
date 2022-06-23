@@ -15,42 +15,71 @@ namespace Core6Mvc.Controllers
             this.context = context;
             this.mapper = mapper;
         }
+
         public IActionResult Index()
         {
-            //
+            // Ekranda görünecek modelimizi olusturuyoruz
             List<EmployeeListDto> listDtos = new List<EmployeeListDto>();
 
-            //database'den calısanları cekiyoruz
+            //Database'den Calisanlari Cekiyoruz
             var EmployeeList = context.Employees.ToList();
 
-            //database den gelen verileri Employeelistdto ya teker teker atıyoruz
-            //    foreach (var employee in EmployeeList)
-            //    {
-            //        EmployeeListDto listDto = new();
-            //        listDto.Id = employee.EmployeeId;
-            //        listDto.FirstName = employee.FirstName;
-            //        listDto.LastName = employee.LastName;
-            //        listDto.HireDate = employee.HireDate;
-            //        listDto.Country = employee.Country;
-            //        listDto.City = employee.City;
-            //        listDto.HomePhone = employee.HomePhone;
 
-            //        //Listeye ekliyoruz..
-            //        listDtos.Add(listDto);
-            //        //view e gönder
+            //database'den Gelen Verileri EmployeelistDto 'ya teker teker atiyoruz
+            //foreach (var employee in EmployeeList)
+            //{
+            //    EmployeeListDto listDto = new();
+            //    listDto.Id = employee.EmployeeId;
+            //    listDto.FirstName = employee.FirstName;
+            //    listDto.LastName = employee.LastName;
+            //    listDto.HireDate = employee.HireDate;
+            //    listDto.Country = employee.Country;
+            //    listDto.City = employee.City;
+            //    listDto.HomePhone = employee.HomePhone;
 
-            //    }
+
+            //    //Listeye ekliyoruz
+            //    listDtos.Add(listDto);
+            //}
             IList<EmployeeListDto> calisanlar = mapper.Map<IList<EmployeeListDto>>(EmployeeList);
             return View(calisanlar);
         }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var calisan = context.Employees.FirstOrDefault(p => p.EmployeeId == id);
+
+
+            EmployeeUpdateDto updateDto = mapper.Map<EmployeeUpdateDto>(calisan);
+            return View(updateDto);
+        }
+
+        [HttpPost]
+        public IActionResult Update(EmployeeUpdateDto input)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(input);
+            }
+            Employee gelen = mapper.Map<Employee>(input);
+
+            context.Employees.Update(gelen);
+            context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
             EmployeeCreateDto createDto = new();
 
-
             return View(createDto);
         }
+
+
+        [HttpPost]
         public IActionResult Create(EmployeeCreateDto input)
         {
             if (ModelState.IsValid)
@@ -69,19 +98,7 @@ namespace Core6Mvc.Controllers
                 return RedirectToAction("Index");
             }
 
-
-
-            return View();
-        }
-        [HttpGet]
-        public IActionResult Update(int id)
-        {
-            var calisan = context.Employees.FirstOrDefault(p => p.EmployeeId == id);
-
-            EmployeeUpdateDto updateDto = mapper.Map<EmployeeUpdateDto>(calisan);
-
-            return View(updateDto);
+            return View(input);
         }
     }
-
 }
