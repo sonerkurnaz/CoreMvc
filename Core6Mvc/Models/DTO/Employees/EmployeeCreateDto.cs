@@ -2,7 +2,7 @@
 
 namespace Core6Mvc.Models.DTO.Employees
 {
-    public class EmployeeCreateDto
+    public class ProductCreateDto
     {
         public int EmployeeId { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace Northwind.BL.Abstract
 {
-    public interface IProductManager : IManagerBase<Product>
+    public interface IEmployeeManager : IManagerBase<Employee>,
     {
 
     }

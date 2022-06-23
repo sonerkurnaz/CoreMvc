@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
 using Core6Mvc.Models.DTO.Employees;
 using Microsoft.AspNetCore.Mvc;
+using Northwind.BL.Abstract;
 using Northwind.Entities;
 
 namespace Core6Mvc.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly NorthwindContext context;
-        private readonly IMapper mapper;
+        private readonly IEmployeeManager manager;
 
-        public EmployeeController(NorthwindContext context, IMapper mapper)
+
+        public EmployeeController(IEmployeeManager manager)
         {
-            this.context = context;
-            this.mapper = mapper;
+            this.manager = manager;
         }
 
         public IActionResult Index()
@@ -73,14 +73,14 @@ namespace Core6Mvc.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            EmployeeCreateDto createDto = new();
+            ProductCreateDto createDto = new();
 
             return View(createDto);
         }
 
 
         [HttpPost]
-        public IActionResult Create(EmployeeCreateDto input)
+        public IActionResult Create(ProductCreateDto input)
         {
             if (ModelState.IsValid)
             {
