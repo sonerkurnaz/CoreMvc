@@ -12,24 +12,24 @@ namespace Northwind.DAL.Concrete
         {
             db = new NorthwindContext();
         }
-        public int Add(T input)
+        public virtual int Add(T input)
         {
             db.Set<T>().Add(input);
             return db.SaveChanges();
         }
-        public int Update(T input)
+        public virtual int Update(T input)
         {
             db.Set<T>().Update(input);
             return db.SaveChanges();
         }
 
-        public int Delete(T input)
+        public virtual int Delete(T input)
         {
             db.Set<T>().Remove(input);
             return db.SaveChanges();
         }
 
-        public List<T> GetAll(Expression<Func<T, bool>> filter = null)
+        public virtual List<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
             if (filter == null)
             {
@@ -41,13 +41,13 @@ namespace Northwind.DAL.Concrete
             }
         }
 
-        public IQueryable<T> GetAllInclude(Expression<Func<T, bool>> filter = null, params Expression<Func<T, object>>[] include)
+        public virtual IQueryable<T> GetAllInclude(Expression<Func<T, bool>> filter = null, params Expression<Func<T, object>>[] include)
         {
             var query = db.Set<T>().Where(filter);
             return include.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
         }
 
-        public T Find(int id)
+        public virtual T Find(int id)
         {
             throw new NotImplementedException();
         }

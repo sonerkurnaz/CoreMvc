@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Northwind.DAL\Northwind.DAL.csproj" />
+    <ProjectReference Include="..\Northwind.Entities\Northwind.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
