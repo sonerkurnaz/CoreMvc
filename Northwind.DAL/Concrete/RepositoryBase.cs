@@ -1,4 +1,5 @@
-﻿using Northwind.DAL.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using Northwind.DAL.Abstract;
 using Northwind.Entities;
 using System.Linq.Expressions;
 
@@ -30,12 +31,20 @@ namespace Northwind.DAL.Concrete
 
         public List<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            if (filter == null)
+            {
+                return db.Set<T>().ToList();
+            }
+            else
+            {
+                return db.Set<T>().Where(filter).ToList();
+            }
         }
 
-        public List<T> GetAllInclude(Expression<Func<T, bool>> filter = null, params Expression<Func<T, object>>[] include)
+        public IQueryable<T> GetAllInclude(Expression<Func<T, bool>> filter = null, params Expression<Func<T, object>>[] include)
         {
-            throw new NotImplementedException();
+            var query = db.Set<T>().Where(filter);
+            return include.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
         }
 
         public T Find(int id)
