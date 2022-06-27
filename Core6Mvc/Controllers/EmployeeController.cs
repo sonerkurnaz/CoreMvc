@@ -9,6 +9,7 @@ namespace Core6Mvc.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployeeManager manager;
+        private readonly IMapper mapper;
 
 
         public EmployeeController(IEmployeeManager manager)
@@ -73,14 +74,14 @@ namespace Core6Mvc.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ProductCreateDto createDto = new();
+            ProductUpdateDto createDto = new();
 
             return View(createDto);
         }
 
 
         [HttpPost]
-        public IActionResult Create(ProductCreateDto input)
+        public IActionResult Create(ProductUpdateDto input)
         {
             if (ModelState.IsValid)
             {

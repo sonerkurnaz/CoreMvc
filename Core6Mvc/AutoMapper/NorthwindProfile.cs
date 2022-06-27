@@ -9,7 +9,7 @@ namespace Core6Mvc.AutoMapper
         public NorthwindProfile()
         {
             CreateMap<Employee, EmployeeListDto>();
-            CreateMap<ProductCreateDto, Employee>();
+            CreateMap<ProductUpdateDto, Employee>();
 
             CreateMap<Employee, EmployeeUpdateDto>();
             CreateMap<EmployeeUpdateDto, Employee>();

@@ -2,7 +2,7 @@
 
 namespace Core6Mvc.Models.DTO.Employees
 {
-    public class ProductCreateDto
+    public class EmployeeUpdateDto
     {
         public int EmployeeId { get; set; }
 
@@ -15,8 +15,8 @@ namespace Core6Mvc.Models.DTO.Employees
         [Required(ErrorMessage = "Soyad alani Boş Geçilemez")]
         [StringLength(50, ErrorMessage = "Soyad Alani 50 karakterden büyük olamaz")]
         [MinLength(2, ErrorMessage = "Soyad alani 2'den az olamaz")]
-        public string? LastName { get; set; }
-        public string? Title { get; set; }
+        public string LastName { get; set; }
+        public string Title { get; set; }
 
         [Required]
         public DateTime? HireDate { get; set; }
