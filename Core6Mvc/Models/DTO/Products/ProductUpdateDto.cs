@@ -1,4 +1,4 @@
-﻿namespace Core6Mvc.Models.DTO.Employees
+﻿namespace Core6Mvc.Models.DTO.Products
 {
     public class ProductUpdateDto
     {

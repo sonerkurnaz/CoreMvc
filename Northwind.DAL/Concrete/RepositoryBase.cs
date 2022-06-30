@@ -7,11 +7,13 @@ namespace Northwind.DAL.Concrete
 {
     public class RepositoryBase<T> : IRepositoryBase<T> where T : class, new()
     {
-        NorthwindContext db;
+        protected NorthwindContext db;
         public RepositoryBase()
         {
             db = new NorthwindContext();
         }
+
+
         public virtual int Add(T input)
         {
             db.Set<T>().Add(input);
@@ -22,7 +24,6 @@ namespace Northwind.DAL.Concrete
             db.Set<T>().Update(input);
             return db.SaveChanges();
         }
-
         public virtual int Delete(T input)
         {
             db.Set<T>().Remove(input);
@@ -43,7 +44,10 @@ namespace Northwind.DAL.Concrete
 
         public virtual IQueryable<T> GetAllInclude(Expression<Func<T, bool>> filter = null, params Expression<Func<T, object>>[] include)
         {
+
             var query = db.Set<T>().Where(filter);
+
+
             return include.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
         }
 
