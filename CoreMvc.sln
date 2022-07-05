@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core6Mvc", "Core6Mvc\Core6M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Entities", "Northwind.Entities\Northwind.Entities.csproj", "{67312E61-8D6B-4D0C-AC39-BF1A28650978}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.DAL", "Northwind.DAL\Northwind.DAL.csproj", "{CA687E5A-AF17-4149-8FDA-71BF421BB93C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.DAL", "Northwind.DAL\Northwind.DAL.csproj", "{CA687E5A-AF17-4149-8FDA-71BF421BB93C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.BL", "Northwind.BL\Northwind.BL.csproj", "{C34C28A0-F792-4053-8F70-73E997863A48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.BL", "Northwind.BL\Northwind.BL.csproj", "{C34C28A0-F792-4053-8F70-73E997863A48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
